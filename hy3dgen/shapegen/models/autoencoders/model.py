@@ -282,6 +282,7 @@ class ShapeVAE(VectsetVAE):
         return latents
 
     def encode(self, surface, sample_posterior=True):
+        print('>'*9, f'surface shape: {surface.shape}')
         pc, feats = surface[:, :, :3], surface[:, :, 3:]
         latents, _ = self.encoder(pc, feats)
         moments = self.pre_kl(latents)

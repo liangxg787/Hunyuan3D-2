@@ -5,7 +5,7 @@ from hy3dgen.shapegen.surface_loaders import SharpEdgeSurfaceLoader
 
 vae = ShapeVAE.from_pretrained(
     'tencent/Hunyuan3D-2mini',
-    subfolder='hunyuan3d-vae-v2-mini-withencoder',
+    subfolder='hunyuan3d-vae-v2-mini-turbo',
     use_safetensors=False,
 )
 loader = SharpEdgeSurfaceLoader(

@@ -590,21 +590,10 @@ class PointCrossAttentionEncoder(nn.Module):
                    1] <= self.pc_sharpedge_size, "Sharpedge surface points size must be less than or equal to pc_sharpedge_size"
 
         # Randomly select random surface points and random query points
-        print('>' * 20, f"self.pc_size: {self.pc_size}")
-        print('>' * 20, f"num_latents: {num_latents}")
-        print('>' * 20, f"self.pc_sharpedge_size: {self.pc_sharpedge_size}")
-        print('>' * 20, f"num_random_query.shape: {num_random_query}")
-        print('>' * 20, f"self.downsample_ratio: {self.downsample_ratio}")
         input_random_pc_size = int(num_random_query * self.downsample_ratio)
         random_query_ratio = num_random_query / input_random_pc_size
         idx_random_pc = torch.randperm(random_pc.shape[1], device=random_pc.device)[:input_random_pc_size]
         input_random_pc = random_pc[:, idx_random_pc, :]
-
-        print('>' * 20, f"input_random_pc.shape: {input_random_pc.shape}")
-        print('>' * 20, f"B: {B}")
-        print('>' * 20, f"input_random_pc_size: {input_random_pc_size}")
-        print('>' * 20, f"D: {D}")
-
         flatten_input_random_pc = input_random_pc.view(B * input_random_pc_size, D)
         N_down = int(flatten_input_random_pc.shape[0] / B)
         batch_down = torch.arange(B).to(pc.device)

@@ -44,7 +44,7 @@ dependencies:
       - charset-normalizer==3.4.2
       - click==8.2.1
       - coloredlogs==15.0.1
-      - custom-rasterizer==0.1
+      - custom-rasterizer
       - dataclasses-json==0.6.7
       - deprecated==1.2.18
       - diffusers==0.34.0
